@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -50,7 +51,7 @@ const View = ({char}) => {
         comicsContent = comics.slice(0, 10).map((item, i) => {
             return (
                 <li key={i} className="char__comics-item">
-                    {item.name}
+                    <Link to={`/comics/${+item.resourceURI.slice(-5)}`}>{item.name}</Link>
                 </li>
             )
         });
@@ -84,9 +85,6 @@ const View = ({char}) => {
             <ul className="char__comics-list">
                 {comicsContent}
             </ul>
-            {/* {comics.length > 10 ? <button className="button button__secondary button__secondary__more">
-                                          <div className="inner">More</div>
-                                      </button> : null} */}
         </>
     )
 }
