@@ -51,7 +51,7 @@ const View = ({char}) => {
         comicsContent = comics.slice(0, 10).map((item, i) => {
             return (
                 <li key={i} className="char__comics-item">
-                    <Link to={`/comics/${+item.resourceURI.slice(-5)}`}>{item.name}</Link>
+                    <Link to={`/comics/${+item.resourceURI.slice(item.resourceURI.lastIndexOf('/') + 1)}`}>{item.name}</Link>
                 </li>
             )
         });
